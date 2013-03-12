@@ -15,6 +15,8 @@ package org.eclipse.emf.ecore.impl;
 import com.google.gwt.user.client.rpc.IsSerializable;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
@@ -52,6 +54,8 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.BinaryResourceImpl;
 import org.eclipse.emf.ecore.util.EcoreValidator;
 import org.eclipse.emf.ecore.util.FeatureMap;
+
+import com.google.gwt.user.client.rpc.IsSerializable;
 
 
 /**
@@ -228,6 +232,20 @@ public class EcorePackageImpl extends EPackageImpl implements EcorePackage
    * @generated
    */
   private EClass eTypeParameterEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EDataType eBigDecimalEDataType = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EDataType eBigIntegerEDataType = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -780,6 +798,34 @@ public class EcorePackageImpl extends EPackageImpl implements EcorePackage
          }
        });
     Reflect.register
+      (BigDecimal.class, 
+       new Reflect.Helper() 
+       {
+         public boolean isInstance(Object instance)
+         {
+           return instance instanceof BigDecimal;
+         }
+
+         public Object newArrayInstance(int size)
+         {
+           return new BigDecimal[size];
+         }
+    });
+    Reflect.register
+      (BigInteger.class, 
+       new Reflect.Helper() 
+       {
+         public boolean isInstance(Object instance)
+         {
+           return instance instanceof BigInteger;
+         }
+
+         public Object newArrayInstance(int size)
+         {
+           return new BigInteger[size];
+         }
+    });
+    Reflect.register
       (Boolean.class, 
        new Reflect.Helper() 
        {
@@ -1257,6 +1303,20 @@ public class EcorePackageImpl extends EPackageImpl implements EcorePackage
      * @generated
      */
     protected ETypeParameter eTypeParameter;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected BigDecimal eBigDecimal;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected BigInteger eBigInteger;
 
     /**
      * <!-- begin-user-doc -->
@@ -2562,6 +2622,26 @@ public class EcorePackageImpl extends EPackageImpl implements EcorePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EDataType getEBigDecimal()
+  {
+    return eBigDecimalEDataType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EDataType getEBigInteger()
+  {
+    return eBigIntegerEDataType;
+  }
+  
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getEParameter()
   {
     return eParameterEClass;
@@ -3317,6 +3397,8 @@ public class EcorePackageImpl extends EPackageImpl implements EcorePackage
     createEReference(eTypeParameterEClass, ETYPE_PARAMETER__EBOUNDS);
 
     // Create data types
+    eBigDecimalEDataType = createEDataType(EBIG_DECIMAL);
+    eBigIntegerEDataType = createEDataType(EBIG_INTEGER);
     eBooleanEDataType = createEDataType(EBOOLEAN);
     eBooleanObjectEDataType = createEDataType(EBOOLEAN_OBJECT);
     eByteEDataType = createEDataType(EBYTE);
@@ -3651,6 +3733,8 @@ public class EcorePackageImpl extends EPackageImpl implements EcorePackage
     initEReference(getETypeParameter_EBounds(), this.getEGenericType(), null, "eBounds", null, 0, -1, ETypeParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize data types
+    initEDataType(eBigDecimalEDataType, BigDecimal.class, "EBigDecimal", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+    initEDataType(eBigIntegerEDataType, BigInteger.class, "EBigInteger", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
     initEDataType(eBooleanEDataType, boolean.class, "EBoolean", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
     initEDataType(eBooleanObjectEDataType, Boolean.class, "EBooleanObject", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
     initEDataType(eByteEDataType, byte.class, "EByte", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
@@ -3791,6 +3875,20 @@ public class EcorePackageImpl extends EPackageImpl implements EcorePackage
   protected void createExtendedMetaDataAnnotations()
   {
     String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";																					
+    addAnnotation
+      (eBigDecimalEDataType, 
+       source, 
+       new String[] 
+       {
+       "baseType", "http://www.w3.org/2001/XMLSchema#decimal"
+       });     
+    addAnnotation
+      (eBigIntegerEDataType, 
+       source, 
+       new String[] 
+       {
+       "baseType", "http://www.w3.org/2001/XMLSchema#integer"
+       });     
     addAnnotation
       (eBooleanEDataType, 
        source, 

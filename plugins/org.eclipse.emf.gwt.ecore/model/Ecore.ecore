@@ -359,6 +359,16 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="EBigDecimal" instanceClassName="java.math.BigDecimal">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="baseType" value="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="EBigInteger" instanceClassName="java.math.BigInteger">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="baseType" value="http://www.w3.org/2001/XMLSchema#integer"/>
+    </eAnnotations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="EBoolean" instanceClassName="boolean">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="baseType" value="http://www.w3.org/2001/XMLSchema#boolean"/>
