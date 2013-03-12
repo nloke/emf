@@ -4701,7 +4701,7 @@ public interface EcorePackage extends EPackage
   EReference getETypeParameter_EBounds();
 
   /**
-   * Returns the meta object for data type '{@link org.eclipse.emf.common.util.EList <em>EE List</em>}'.
+   * Returns the meta object for data type '{@link java.math.BigDecimal <em>EBig Decimal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for data type '<em>EBig Decimal</em>'.

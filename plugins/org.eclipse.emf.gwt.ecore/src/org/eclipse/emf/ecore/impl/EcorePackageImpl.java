@@ -55,8 +55,6 @@ import org.eclipse.emf.ecore.resource.impl.BinaryResourceImpl;
 import org.eclipse.emf.ecore.util.EcoreValidator;
 import org.eclipse.emf.ecore.util.FeatureMap;
 
-import com.google.gwt.user.client.rpc.IsSerializable;
-
 
 /**
  * <!-- begin-user-doc -->
