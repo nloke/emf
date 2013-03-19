@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.eclipse</groupId>
+	<artifactId>emf-gwt</artifactId>
+	<packaging>pom</packaging>
+	<version>2.9.0-SNAPSHOT</version>
+
+	<properties>
+		<gwtVersion>2.5.1-rc1</gwtVersion>
+		<appEngineVersion>1.7.5</appEngineVersion>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<repository.directory>/maven_repo/deploy/github</repository.directory>
+		<github.global.server>github</github.global.server>
+	</properties>
+
+	<modules>
+		<module>../../plugins/org.eclipse.emf.gwt.common</module>
+		<module>../../plugins/org.eclipse.emf.gwt.ecore</module>
+		<module>../../plugins/org.eclipse.emf.gwt.ecore.change</module>
+		<module>../../plugins/org.eclipse.emf.gwt.edit</module>
+		<module>../../plugins/org.eclipse.emf.gwt.edit.ui</module>
+		<module>../../plugins/org.eclipse.emf.gwt.ecore.edit</module>
+	</modules>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-user</artifactId>
+			<version>${gwtVersion}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.appengine</groupId>
+			<artifactId>appengine</artifactId>
+			<version>${appEngineVersion}</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>com.google.appengine</groupId>
+			<artifactId>appengine-api-1.0-sdk</artifactId>
+			<version>${appEngineVersion}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+
+		<plugins>
+			<plugin>
+				<groupId>com.github.github</groupId>
+				<artifactId>site-maven-plugin</artifactId>
+				<version>0.7</version>
+				<configuration>
+					<!-- git commit message -->
+					<message>Maven artifacts for ${project.version}</message>
+					<!-- disable webpage processing -->
+					<noJekyll>true</noJekyll>
+					<!-- matches distribution management repository url above -->
+					<outputDirectory>${repository.directory}</outputDirectory>
+					<!-- remote branch name -->
+					<branch>refs/heads/master</branch>
+					<includes>
+						<include>**/*</include>
+					</includes>
+					<!-- github repo name -->
+					<repositoryName>maven-repository</repositoryName>
+					<!-- github username -->
+					<repositoryOwner>nloke</repositoryOwner>
+				</configuration>
+				<executions>
+					<!-- run site-maven-plugin's 'site' target as part of the build's normal 
+						'deploy' phase -->
+					<execution>
+						<goals>
+							<goal>site</goal>
+						</goals>
+						<phase>deploy</phase>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>gwt-maven-plugin</artifactId>
+					<version>${gwtVersion}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>resources</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.5</source>
+						<target>1.5</target>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>github-release</id>
+			<url>file://${repository.directory}/release</url>
+		</repository>
+		<snapshotRepository>
+			<id>github-snapshot</id>
+			<url>file://${repository.directory}/snapshot</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+</project>
